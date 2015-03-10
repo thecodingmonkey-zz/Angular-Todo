@@ -29,4 +29,22 @@ angular
       }
     }
 
+    $scope.check_changed = function ( $event, todo_id ) {
+      console.log('$event', $event);
+
+      if ($event.srcElement.checked) {
+        TodoService.complete(todo_id);
+      }
+      else {
+        TodoService.uncomplete(todo_id);
+      }
+    }
+
+    $scope.remove = function( todo) {
+//      console.log($scope.todos);
+      TodoService.deleteItem(todo._id);
+      $scope.todos.splice($scope.todos.indexOf(todo), 1  )
+
+    }
+
   }]);

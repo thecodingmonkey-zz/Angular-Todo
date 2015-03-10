@@ -7,8 +7,18 @@ angular
     };
 
     this.create = function( todo ) {
-//      console.log(todo);
       return $http.post('/api', todo);
-    }
+    };
 
+    this.complete = function( todo_id ) {
+      return $http.put('/api/' + todo_id + '/complete');
+    };
+
+    this.uncomplete = function( todo_id ) {
+      return $http.put('/api/' + todo_id + '/uncomplete');
+    };
+
+    this.deleteItem = function( todo_id ) {
+      return $http.delete('/api/' + todo_id);
+    }
   }])
