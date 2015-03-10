@@ -2,8 +2,11 @@ angular
   .module('TodoApp', [])
   
   // dependency injection?                     v
-  .controller('TodoController', ['$scope', function($scope) {
+  .controller('TodoController', ['$scope', 'TodoService', function($scope, TodoService) {
 
+    TodoService.list().then(function(response) {
+      $scope.todos = response.data;
+    });
 
     $scope.save_todo = function( new_title ) {
       $scope.todos.push({
@@ -20,15 +23,4 @@ angular
       }
     }
 
-//    $scope.name = "IS HOOKED UP";
-    $scope.todos = [
-      {
-        title: "Fake Title",
-        completed: false
-      },
-      {
-        title: "Another Fake Title",
-        completed: true
-      }
-    ]
   }]);
