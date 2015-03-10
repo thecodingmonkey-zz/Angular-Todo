@@ -14,15 +14,17 @@ angular
           completed : false
       }
 
+      $scope.todos.push(newItem);
       $scope.new_todo = "";
 
-      $scope.todos.push(newItem);
+      TodoService.create({ title: new_title }).then(function(response) {
+        newItem._id = response.data._id;
 
-      TodoService.create({ title: new_title });
+      });
     }
 
     $scope.enter_saves = function ($event) {
-      console.log($event);
+//      console.log($event);
 
       if ( $event.keyCode == 13) {
         $scope.save_todo( $scope.new_todo );
