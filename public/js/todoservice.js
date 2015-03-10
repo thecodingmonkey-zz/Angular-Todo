@@ -6,6 +6,9 @@ angular
       return $http.get('/api');   
     };
 
-    
+    this.create = function( todo ) {
+//      console.log(todo);
+      return $http.post('/api', todo);
+    }
 
   }])

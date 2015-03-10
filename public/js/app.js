@@ -9,10 +9,16 @@ angular
     });
 
     $scope.save_todo = function( new_title ) {
-      $scope.todos.push({
+      var newItem = {
           title: new_title,
           completed : false
-      });
+      }
+
+      $scope.new_todo = "";
+
+      $scope.todos.push(newItem);
+
+      TodoService.create({ title: new_title });
     }
 
     $scope.enter_saves = function ($event) {
